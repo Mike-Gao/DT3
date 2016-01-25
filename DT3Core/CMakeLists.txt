@@ -13,7 +13,6 @@ aux_source_directory(. SRC_LIST)
 #
 #==============================================================================
 
-project(DT3Core C CXX)
 #cmake_minimum_required(VERSION 2.8)
 
 set(CMAKE_C_COMPILER_INIT g++)
@@ -49,7 +48,7 @@ MACRO(HEADER_DIRECTORIES new_list return_list)
     SET(${return_list} ${dir_list})
 ENDMACRO()
 
-set (ENGINE_ROOT "${PROJECT_SOURCE_DIR}")
+set (ENGINE_ROOT "${PROJECT_SOURCE_DIR}/DT3Core")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH})
 
 #
@@ -369,14 +368,14 @@ include_directories(${HEADER_INCLUDES})
 
 link_directories(${NDK_PLATFORM_LIBS} ${MODULE_LIBS_DIRS})
 
-add_library(${PROJECT_NAME} STATIC ${PROJECT_SOURCE})
+add_library(DT3Core STATIC ${PROJECT_SOURCE})
 
 ##
-#set_target_properties(${PROJECT_NAME} PROPERTIES
+#set_target_properties(DT3Core PROPERTIES
 #  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/project/libs/${ANDROID_ABI}"
 #)
 
-#target_link_libraries (${PROJECT_NAME}
+#target_link_libraries (DT3Core
 #        ${NDK_PLATFORM_LIBS}/libm.so
 #        ${NDK_PLATFORM_LIBS}/libdl.so
 #        ${NDK_PLATFORM_LIBS}/libc.so
@@ -394,5 +393,4 @@ add_library(${PROJECT_NAME} STATIC ${PROJECT_SOURCE})
 
 
 
-#add_executable(${PROJECT_NAME} ${SRC_LIST})
 
